@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ubion | Geolocalización y telemetría inteligente</title>
+<meta name="description" content="Ubion conecta vehículos, activos y sensores en una plataforma de geolocalización y telemetría. Visualiza posiciones, recorridos y variables de operación.">
+<meta name="theme-color" content="#080d18">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./assets/css/landing.css">
+<link rel="icon" href="../../assets/logos/ubion.png" type="image/png">
+</head>
+<body>
+<div class="ambient"></div>
+<nav class="nav" id="nav">
+ <div class="wrap nav-inner">
+  <a class="brand" href="#inicio"><img src="../../assets/logos/ubion.png" alt="Ubion"></a>
+  <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+  <div class="nav-links" id="navLinks">
+   <a href="#plataforma">Plataforma</a><a href="#telemetria">Telemetría</a><a href="#dispositivos">Dispositivos</a><a href="#datos">Datos e inteligencia</a><a href="#faq">Preguntas</a>
+   <a class="nav-cta" href="#contacto">Solicitar información <span>↗</span></a>
+  </div>
+ </div>
+</nav>
+
+<header class="hero" id="inicio">
+ <div class="wrap hero-grid">
+  <div class="hero-copy">
+   <span class="eyebrow"><i></i> GEOLOCALIZACIÓN · TELEMETRÍA · IOT</span>
+   <div class="micro-label">CONECTA LO QUE SE MUEVE</div>
+   <h1>Más que ubicar.<br><span class="gradient">Entiende lo que sucede.</span></h1>
+   <p class="lead">Ubion reúne la ubicación de tus vehículos y activos con datos de telemetría para darte una visión más completa de tu operación, desde una sola plataforma.</p>
+   <div class="actions"><a class="btn btn-primary" href="#contacto">Conocer Ubion <span>→</span></a><a class="btn btn-outline" href="#plataforma">Explorar plataforma <span>↓</span></a></div>
+   <div class="hero-proof"><span class="live"></span> Ubicación y variables operativas en una vista conectada.</div>
+  </div>
+  <div class="map-scene">
+   <div class="map-top"><span><i></i> VISTA DE MONITOREO</span><span class="map-live">● CONEXIÓN ACTIVA</span></div>
+   <div class="map-canvas">
+    <svg class="map-lines" viewBox="0 0 600 430" preserveAspectRatio="none" aria-hidden="true">
+     <path d="M-20 110 C90 80 105 175 205 145 S360 45 450 110 S550 160 630 120"/>
+     <path d="M-10 280 C80 230 140 300 220 260 S340 200 410 260 S520 350 620 290"/>
+     <path d="M90 -20 C150 80 100 130 170 210 S230 320 180 450"/>
+     <path d="M390 -20 C350 75 430 140 390 210 S450 330 510 450"/>
+     <path d="M0 360 L600 60"/>
+     <path d="M20 20 L580 410"/>
+    </svg>
+    <div class="map-block block-a"></div><div class="map-block block-b"></div><div class="map-block block-c"></div><div class="map-block block-d"></div>
+    <div class="route route-one"></div><div class="route route-two"></div>
+    <div class="map-pin pin-one"><span>🚚</span><b>Vehículo 01</b><small>En movimiento</small></div>
+    <div class="map-pin pin-two"><span>🚛</span><b>Vehículo 08</b><small>En ruta</small></div>
+    <div class="map-pin pin-three"><span>⌖</span><b>Activo 12</b><small>Ubicación reportada</small></div>
+    <div class="radar"></div>
+    <div class="map-coord">6°14' · 75°34'<br><small>COORDENADAS GPS</small></div>
+    <div class="map-scale"><span></span><span></span><span></span></div>
+   </div>
+   <div class="map-bottom"><span><i class="green-dot"></i> Dispositivo reportando</span><span>Actualización de posición</span></div>
+   <div class="sensor-float"><div class="sensor-icon">♨</div><div><small>TEMPERATURA</small><b>4.8 °C</b><em>Sensor conectado</em></div><span class="sensor-wave">〰</span></div>
+   <div class="signal-float"><span class="signal-icon">⌁</span><div><b>Telemetría recibida</b><small>Datos del dispositivo</small></div></div>
+  </div>
+ </div>
+</header>
+
+<section class="stat-band">
+ <div class="wrap stat-grid">
+  <div><b>01</b><span>Ubicación</span><small>Visualiza dónde están tus activos.</small></div>
+  <div><b>02</b><span>Telemetría</span><small>Consulta variables y eventos.</small></div>
+  <div><b>03</b><span>Conectividad</span><small>Integra distintos dispositivos compatibles.</small></div>
+  <div><b>04</b><span>Contexto</span><small>Comprende mejor lo que ocurre.</small></div>
+ </div>
+</section>
+
+<section class="section" id="plataforma">
+ <div class="wrap">
+  <div class="section-head reveal"><span class="kicker">// UNA VISTA CONECTADA</span><h2>Tu operación visible.<br><span class="gradient">Tus datos en contexto.</span></h2><p>Ubion es una plataforma de geolocalización y telemetría que te permite consultar la información transmitida por los dispositivos conectados y entender el comportamiento de tus activos.</p></div>
+  <div class="feature-grid">
+   <article class="feature feature-wide reveal"><div class="feature-art mini-map"><div class="mini-road road-a"></div><div class="mini-road road-b"></div><div class="mini-road road-c"></div><span class="mini-marker m1">⌖</span><span class="mini-marker m2">⌖</span><span class="mini-marker m3">⌖</span><div class="mini-legend"><i></i> Activos geolocalizados</div></div><div class="feature-copy"><span class="number">01 / GEOLOCALIZACIÓN</span><h3>Ubicación y recorridos</h3><p>Visualiza vehículos y activos en el mapa, consulta sus posiciones reportadas y revisa información de recorridos según los datos disponibles.</p></div></article>
+   <article class="feature reveal"><div class="feature-icon">⌁</div><span class="number">02 / MONITOREO</span><h3>Eventos y alertas</h3><p>Identifica novedades y eventos transmitidos por los dispositivos para mantener visibilidad sobre la operación.</p><div class="event-demo"><span class="event-dot"></span><b>Evento recibido</b><small>Dispositivo conectado</small></div></article>
+   <article class="feature reveal"><div class="feature-icon temp">♨</div><span class="number">03 / SENSORES</span><h3>Variables de telemetría</h3><p>Consulta datos de sensores compatibles, como temperatura, además de otras variables que reporte el hardware instalado.</p><div class="temp-demo"><span>°C</span><b>4.8</b><small>Lectura ilustrativa</small><div class="temp-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div></article>
+   <article class="feature reveal"><div class="feature-icon">◈</div><span class="number">04 / ACTIVOS</span><h3>Vehículos y equipos</h3><p>Centraliza la visualización de distintos activos y consulta la información que cada dispositivo tenga habilitada.</p><div class="asset-chips"><span>Vehículos</span><span>Activos</span><span>Sensores</span></div></article>
+  </div>
+ </div>
+</section>
+
+<section class="telemetry-section" id="telemetria">
+ <div class="wrap telemetry-layout">
+  <div class="telemetry-copy reveal"><span class="kicker">// DEL GPS A LA TELEMETRÍA</span><h2>Un dispositivo puede contar mucho más que una ubicación.</h2><p>Además de coordenadas, los equipos compatibles pueden transmitir diferentes variables. Ubion permite consultar la información que el hardware y su configuración ponen a disposición.</p>
+   <div class="telemetry-list">
+    <div><span class="tele-icon">♨</span><span><b>Temperatura</b><small>Seguimiento de condiciones térmicas mediante sensores compatibles.</small></span></div>
+    <div><span class="tele-icon">⛽</span><span><b>Combustible</b><small>Lecturas de nivel o consumo cuando el dispositivo y sensor lo permiten.</small></span></div>
+    <div><span class="tele-icon">ϟ</span><span><b>Ignición y energía</b><small>Estados eléctricos y señales disponibles en el equipo.</small></span></div>
+    <div><span class="tele-icon">⌁</span><span><b>Eventos y entradas</b><small>Señales, alertas y variables configuradas en el dispositivo.</small></span></div>
+   </div>
+  </div>
+  <div class="telemetry-board reveal">
+   <div class="board-head"><span>LECTURAS DE TELEMETRÍA</span><span class="board-status"><i></i> DEMO VISUAL</span></div>
+   <div class="sensor-cards">
+    <div class="sensor-card"><span class="sensor-title">TEMPERATURA</span><div class="sensor-value">4.8<small>°C</small></div><div class="sparkline"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><small class="sensor-note">Sensor compatible</small></div>
+    <div class="sensor-card"><span class="sensor-title">COMBUSTIBLE</span><div class="sensor-value">72<small>%</small></div><div class="fuel-track"><i></i></div><small class="sensor-note">Lectura ilustrativa</small></div>
+    <div class="sensor-card"><span class="sensor-title">IGNICIÓN</span><div class="sensor-state"><i></i> ENCENDIDA</div><small class="sensor-note">Estado reportado</small></div>
+    <div class="sensor-card"><span class="sensor-title">SEÑAL GPS</span><div class="signal-bars"><i></i><i></i><i></i><i></i><i></i></div><small class="sensor-note">Calidad según dispositivo</small></div>
+   </div>
+   <div class="board-foot"><span>Los valores presentados son demostrativos.</span><span>UBION / IOT</span></div>
+  </div>
+ </div>
+</section>
+
+<section class="devices-section" id="dispositivos">
+ <div class="wrap">
+  <div class="section-head center reveal"><span class="kicker">// CONECTA TU HARDWARE</span><h2>Un ecosistema de dispositivos.<br><span class="gradient">Más posibilidades de monitoreo.</span></h2><p>Ubion está orientado a trabajar con diferentes dispositivos de geolocalización y telemetría. Las variables disponibles dependen del modelo, los sensores instalados y su configuración.</p></div>
+  <div class="device-flow reveal">
+   <div class="device-types">
+    <div class="device-tile"><span class="device-symbol">⌖</span><b>GPS vehicular</b><small>Posición y recorrido</small></div>
+    <div class="device-tile"><span class="device-symbol">♨</span><b>Sensor térmico</b><small>Temperatura</small></div>
+    <div class="device-tile"><span class="device-symbol">⛽</span><b>Sensor de nivel</b><small>Combustible</small></div>
+    <div class="device-tile"><span class="device-symbol">◉</span><b>Entradas y eventos</b><small>Estados y señales</small></div>
+   </div>
+   <div class="cloud-connection"><div class="connection-line"><i></i><i></i><i></i><i></i></div><div class="cloud"><span>☁</span><b>NUBE UBION</b><small>Recepción y consulta de datos</small></div><div class="connection-line reverse"><i></i><i></i><i></i><i></i></div></div>
+   <div class="device-output"><img src="../../assets/logos/ubion.png" alt="Ubion"><b>Plataforma de monitoreo</b><small>Ubicación + telemetría</small><div class="output-tags"><span>Mapa</span><span>Eventos</span><span>Sensores</span></div></div>
+  </div>
+  <p class="device-note">La compatibilidad se valida según el protocolo, modelo del equipo, configuración y disponibilidad de datos.</p>
+
+  <div class="brands-strip reveal" aria-label="Fabricantes de dispositivos de telemetría">
+   <div class="brands-heading">
+    <span class="kicker">// ECOSISTEMA DE DISPOSITIVOS</span>
+    <p>Compatible con tecnología de múltiples fabricantes</p>
+   </div>
+   <div class="brand-logos">
+    <div class="brand-logo"><img src="assets/images/brands/queclink.png" alt="Queclink"></div>
+    <div class="brand-logo"><img src="assets/images/brands/suntech.png" alt="Suntech"></div>
+    <div class="brand-logo"><img src="assets/images/brands/calamp.png" alt="CalAmp"></div>
+    <div class="brand-logo"><img src="assets/images/brands/ruptela.png" alt="Ruptela"></div>
+    <div class="brand-logo"><img src="assets/images/brands/teltonika.png" alt="Teltonika"></div>
+    <div class="brand-logo"><img src="assets/images/brands/topflytech.png" alt="Topflytech"></div>
+    <div class="brand-logo"><img src="assets/images/brands/meitrack.png" alt="Meitrack"></div>
+    <div class="brand-logo"><img src="assets/images/brands/gosafe.png" alt="Gosafe"></div>
+    <div class="brand-logo"><img src="assets/images/brands/concox.png" alt="Concox"></div>
+   </div>
+   <p class="brands-note">La compatibilidad específica depende del modelo, protocolo y configuración de cada dispositivo.</p>
+  </div>
+ </div>
+</section>
+
+<section class="data-section" id="datos">
+ <div class="wrap data-layout">
+  <div class="data-copy reveal"><span class="kicker">// INFORMACIÓN QUE APORTA CONTEXTO</span><h2>De señales dispersas a una visión más completa.</h2><p>Los dispositivos generan información. Ubion ayuda a reunirla y visualizarla para que tu equipo pueda comprender mejor la ubicación, el estado y las variables de sus activos.</p><a href="#contacto" class="text-link">Hablemos de tu proyecto <b>↗</b></a></div>
+  <div class="data-steps reveal">
+   <div class="data-step"><span class="step-num">01</span><div><b>Capturar</b><small>Dispositivos GPS y sensores transmiten información.</small></div><span class="step-symbol">⌖</span></div>
+   <div class="step-connector"></div>
+   <div class="data-step"><span class="step-num">02</span><div><b>Conectar</b><small>Los datos llegan mediante mecanismos compatibles.</small></div><span class="step-symbol">⌁</span></div>
+   <div class="step-connector"></div>
+   <div class="data-step"><span class="step-num">03</span><div><b>Visualizar</b><small>Consulta posiciones, eventos y variables disponibles.</small></div><span class="step-symbol">▤</span></div>
+   <div class="step-connector"></div>
+   <div class="data-step highlight-step"><span class="step-num">04</span><div><b>Comprender</b><small>Usa la información como contexto para tu operación.</small></div><span class="step-symbol">✦</span></div>
+  </div>
+ </div>
+</section>
+
+<section class="faq-section" id="faq">
+ <div class="wrap faq-layout">
+  <div class="section-head reveal"><span class="kicker">// PREGUNTAS FRECUENTES</span><h2>¿Qué puedes conectar con <span class="gradient">Ubion?</span></h2><p>Conoce algunos aspectos importantes sobre dispositivos y telemetría.</p></div>
+  <div class="faq-list reveal">
+   <details><summary>¿Ubion funciona con diferentes marcas de GPS?<span>＋</span></summary><p>Ubion está orientado a soportar diferentes dispositivos de geolocalización y telemetría. La compatibilidad concreta depende del protocolo, modelo y configuración del equipo.</p></details>
+   <details><summary>¿Puedo monitorear temperatura?<span>＋</span></summary><p>Sí, es posible consultar información de temperatura cuando se cuenta con un dispositivo y sensor compatible, correctamente instalados y configurados.</p></details>
+   <details><summary>¿Solo muestra la ubicación de los vehículos?<span>＋</span></summary><p>No necesariamente. Según las capacidades del hardware conectado, también puede recibir variables de telemetría, estados y eventos adicionales.</p></details>
+   <details><summary>¿Ubion se puede integrar con otros sistemas?<span>＋</span></summary><p>Las posibilidades de integración se revisan según los servicios, APIs y mecanismos de intercambio disponibles. Podemos evaluar el escenario de tu empresa.</p></details>
+  </div>
+ </div>
+</section>
+
+<section class="contact-section" id="contacto">
+ <div class="wrap contact-card">
+  <div class="contact-glow"></div>
+  <div class="contact-copy"><span class="kicker">// CONECTA TU OPERACIÓN</span><h2>Descubre lo que tus dispositivos pueden <span class="gradient">contarte.</span></h2><p>Cuéntanos qué vehículos, activos o variables necesitas monitorear. Nuestro equipo puede ayudarte a evaluar la compatibilidad y las posibilidades de Ubion.</p></div>
+  <div class="contact-actions"><a class="btn btn-primary" href="mailto:info@flotaq.com?subject=Informaci%C3%B3n%20sobre%20Ubion">Solicitar información ↗</a><a class="email" href="mailto:info@flotaq.com">info@flotaq.com</a></div>
+ </div>
+</section>
+
+
+<section class="whatsapp-contact" aria-label="Contacto por WhatsApp">
+  <div class="wrap whatsapp-contact-inner">
+    <div class="whatsapp-contact-copy">
+      <span class="whatsapp-kicker">¿Hablamos?</span>
+      <h2>Conversemos sobre tu operación.</h2>
+      <p>Escríbenos por WhatsApp y te ayudaremos a encontrar la solución tecnológica que necesitas.</p>
+    </div>
+    <a class="whatsapp-pill" href="https://wa.me/573167287391?text=Hola%2C%20quiero%20conocer%20m%C3%A1s%20sobre%20sus%20soluciones." target="_blank" rel="noopener noreferrer" aria-label="Contactar a GmapService por WhatsApp al 3167287391">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16.04 3C8.88 3 3.05 8.75 3.05 15.83c0 2.27.6 4.49 1.74 6.44L3 29l6.94-1.8a13.1 13.1 0 0 0 6.1 1.5h.01c7.16 0 12.99-5.75 12.99-12.83 0-3.43-1.36-6.65-3.83-9.08A13.02 13.02 0 0 0 16.04 3zm0 23.52h-.01c-1.9 0-3.76-.5-5.39-1.44l-.39-.23-4.12 1.07 1.1-4-.25-.4a10.57 10.57 0 0 1-1.63-5.69c0-5.86 4.8-10.62 10.7-10.62 2.86 0 5.55 1.1 7.57 3.1a10.5 10.5 0 0 1 3.14 7.52c0 5.86-4.8 10.62-10.72 10.62zm5.88-7.95c-.32-.16-1.9-.93-2.2-1.03-.3-.11-.51-.16-.73.16-.21.32-.83 1.03-1.02 1.24-.19.22-.38.24-.7.08-.32-.16-1.35-.5-2.57-1.58-.95-.83-1.59-1.86-1.78-2.18-.19-.32-.02-.49.14-.65.14-.14.32-.38.48-.57.16-.19.21-.32.32-.54.1-.21.05-.4-.03-.56-.08-.16-.73-1.73-1-2.37-.26-.62-.53-.54-.73-.55h-.62c-.22 0-.57.08-.87.4-.3.32-1.14 1.1-1.14 2.67s1.17 3.1 1.33 3.32c.16.21 2.3 3.48 5.57 4.88.78.34 1.39.54 1.87.69.79.25 1.5.22 2.07.13.63-.1 1.9-.77 2.17-1.51.27-.75.27-1.4.19-1.52-.08-.13-.3-.21-.62-.37z"/></svg>
+      <span>WhatsApp : 3167287391</span>
+      <span class="whatsapp-arrow">↗</span>
+    </a>
+  </div>
+</section>
+
+<footer><div class="wrap footer-inner"><a href="#inicio"><img src="../../assets/logos/ubion.png" alt="Ubion"></a><span>Ubion · Geolocalización y telemetría inteligente</span><a href="#inicio">Volver arriba ↑</a></div><div class="wrap foot-bottom">Una solución tecnológica de GmapService · © <span id="year"></span></div></footer>
+<script src="./assets/js/main.js"></script>
+</body>
+</html>

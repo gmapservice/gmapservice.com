@@ -1,705 +1,519 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>GmapService</title>
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-        crossorigin="anonymous">
-    <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <!-- Importa el archivo CSS -->
-    <link rel="icon" href="./assets/icon.svg" type="image/svg+xml">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GmapService — Telemetría y Gestión de Flotas GPS</title>
+<meta name="description" content="Plataforma de telemetría GPS para gestionar flotas de transporte: geolocalización en tiempo real, datos de vehículos, extractos FUEC y mantenimiento predictivo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./assets/css/style.css">
+<link rel="icon" href="./assets/icon.svg" type="image/svg+xml">
 </head>
 <body>
-    <section class="py-3 position-relative" id="inicio"
-        style="background-image: url('./assets/images/navbar.jpg'); background-size: cover; background-position: center; background-color: rgb(255, 255, 255); border-bottom-left-radius: 50px; border-bottom-right-radius: 50px;">
-        <nav class="navbar navbar-expand-md navbar-light sticky-top"
-            style="background-color: rgba(0, 0, 0, 0);">
-            <div class="container">
-                <a class="navbar-brand" href="#">
-                    <img src="./assets/Gmap.svg" alt="Logo" width="150"
-                        height="40" class="h-100">
-                </a>
-                <button class="navbar-toggler border-0" type="button"
-                    data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-                    aria-controls="offcanvasNavbar"
-                    aria-label="Toggle navigation">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                        height="24" fill="currentColor" class="bi bi-list"
-                        viewBox="0 0 16 16">
-                        <path fill-rule="evenodd"
-                            d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
-                    </svg>
-                </button>
-                <div class="offcanvas offcanvas-end" tabindex="-1"
-                    id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-                    <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
-                            Menu</h5>
-                        <button type="button" class="btn-close"
-                            data-bs-dismiss="offcanvas"
-                            aria-label="Close"></button>
-                    </div>
-                    <div class="offcanvas-body">
-                        <ul
-                            class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                            <li class="nav-item">
-                                <a class="nav-link text-light"
-                                    aria-current="page"
-                                    href="#inicio">Inicio</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-light"
-                                    href="#servicio">Aplicaciones</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle text-light"
-                                    href="#" role="button"
-                                    data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    Servicios
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#"><i
-                                                class="bi bi-union"></i>
-                                            Integraciones</a></li>
-                                    <li><a class="dropdown-item" href="#"><i
-                                                class="bi bi-terminal-fill"></i>
-                                            Desarrollo</a></li>
-                                    <li><a class="dropdown-item" href="#"><i
-                                                class="bi bi-cpu-fill"></i>
-                                            Dispositivos</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a class="dropdown-item"
-                                            href="https://6re32.hatchboxapp.com/home/form"
-                                            target="_blank"><i
-                                                class="bi bi-wrench-adjustable"></i>
-                                            Soporte</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-light"
-                                    href="#preguntas">Preguntas</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-light"
-                                    href="#contacto">Contacto</a>
-                            </li>
-                            <button
-                                class="btn btn-sm btn btn-warning rounded-4 gap-6"
-                                target="_blank" type="button"
-                                onclick="window.location.href='http://s1-gmapservice.com/GmapService/Index.html'">
-                                <b>Login</b>
-                            </button>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </nav>
-        <!-- Overlay oscura -->
-        <div class="dark-overlay"></div>
-        <div class="container position-relative py-5">
-            <div class="row gy-3 gy-md-4 gy-lg-0 align-items-lg-center">
-                <div class="col-12 col-lg-6 col-xl-7">
-                    <div class="row justify-content-xl-center">
-                        <div class="col-12 col-xl-11">
-                            <h2 class="h1 mb-3 text-white">¿Trabajas en una
-                                empresa de transporte?</h2>
-                            <p class="lead fs-4 text-light mb-3">Gestione su
-                                flota de vehículos y controle cada uno de los
-                                procesos de su operación, integrando datos
-                                adicionales para sus informes.</p>
-                            <p class="mb-5 text-light"><b>GmapService</b> es una
-                                aplicación web que te permitirá gestionar de
-                                forma sencilla la operación de su empresa de
-                                transporte, puede gestionar la hoja de vida de
-                                los vehículos, crear extractos de transporte,
-                                programar mantenimiento, entre otras funciones.
-                            </p>
-                            <div class="row gy-4 gy-md-0 gx-xxl-5X">
-                                <div class="col-12 col-md-6">
-                                    <div class="d-flex">
-                                        <div class="me-4 text-white">
-                                            <i
-                                                class="bi bi-geo-alt-fill fs-2"></i>
-                                        </div>
-                                        <!--<div>
-                    <h4 class="mb-3 text-white">Mantenimientos</h4>
-                    <p class="text-light mb-0">Programación de mantenimiento preventivo y correctivo.</p>
-                  </div>-->
-                                        <div>
-                                            <h4 class="mb-3 text-white">
-                                                Geolocalización</h4>
-                                            <p class="text-light mb-0">Supervice
-                                                la ubicación de sus vehículos.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                    <div class="d-flex">
-                                        <div class="me-4 text-white">
-                                            <i
-                                                class="bi bi-file-earmark-text-fill fs-2"></i>
-                                        </div>
-                                        <div>
-                                            <h4 class="mb-3 text-white">
-                                                Extractos de Transporte</h4>
-                                            <p class="text-light mb-0">Control y
-                                                generador de FUEC con
-                                                verificación QR.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<div class="bg-grid"></div>
+
+<!-- ============ NAV ============ -->
+<nav id="nav">
+  <div class="wrap nav-in">
+    <a href="#inicio" class="brand-nav"><img src="./assets/logos/gmapservice_nav.png" alt="GmapService"></a>
+    <button id="burger" aria-label="Menú">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="#inicio">Inicio</a>
+      <a href="#ecosistema">Soluciones</a>
+      <a href="nosotros.html">Nosotros</a>
+      <div class="nav-dropdown">
+        <button class="nav-drop-trigger" type="button" aria-expanded="false" aria-controls="servicesMenu">Servicios <span class="chevron">⌄</span></button>
+        <div class="nav-drop-menu" id="servicesMenu">
+          <a href="pages/developer.html"><span class="menu-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><path d="M14 17h6M17 14v6"/></svg></span><span><b>Desarrollo</b><small>Software a la medida</small></span></a>
+          <a href="pages/devices.html"><span class="menu-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="3"/><circle cx="12" cy="12" r="3"/><path d="M7 3v3M17 3v3M7 18v3M17 18v3"/></svg></span><span><b>Dispositivos</b><small>Telemetría e IoT</small></span></a>
+          <a href="pages/integrations.html"><span class="menu-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h14l-3-3M20 17H6l3 3"/><path d="M18 4l3 3-3 3M6 14l-3 3 3 3"/></svg></span><span><b>Integraciones</b><small>GPS, APIs y plataformas</small></span></a>
         </div>
-    </section>
-    <!-- Serivcios -->
-    <section class="py-5 py-xl-8 rounded-4" id="servicio">
-        <div class="container rounded-4">
-            <div class="row justify-content-center">
-                <div
-                    class="col-12 col-md-10 col-lg-8 col-xl-7 col-xxl-6 text-center">
-                    <h2 class="mb-4 display-5">Aplicaciones</h2>
-                    <p class="text-secondary mb-5">Somos una empresa de
-                        desarrollo de software, nuestros servicios están
-                        orientados a la gestión del transporte espacial y
-                        logística con soluciones de monitoreo de vehículos,
-                        gestión de mantenimiento e integración de sistemas con
-                        otras plataformas.</p>
-                    <hr class="w-50 mx-auto mb-5 mb-xl-9 border-dark-subtle">
-                </div>
-            </div>
+      </div>
+      <a href="#telemetria">Telemetría</a>
+      <a href="#aplicaciones">Aplicaciones</a>
+      <a href="#plataforma">Plataforma</a>
+      <a href="#preguntas">Preguntas</a>
+      <a href="#contacto">Contacto</a>
+      <a class="btn-a btn-p support-cta" href="https://6re32.hatchboxapp.com/home/form" target="_blank" rel="noopener">Soporte ↗</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="inicio">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow"><i></i>Telemetría GPS en tiempo real</span>
+      <h1>Tecnología que conecta<br><span class="grad-txt">cada dato de tu flota</span><br>con mejores decisiones.</h1>
+      <p class="lead">Gestione su flota de vehículos y controle cada proceso de su operación con datos de GPS en vivo. <b>GmapService integra datos GPS con soluciones de geolocalización y gestión de transporte. Conectamos tus plataformas para transformar señales de vehículos en información útil para toda la operación.</b></p>
+      <div class="cta">
+        <a class="btn-a btn-p" href="#contacto">Solicitar demo</a>
+        <a class="btn-a btn-g" href="#telemetria">Ver la telemetría en vivo</a>
+      </div>
+      <div class="hero-feat">
+        <div class="hf">
+          <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><h4>Geolocalización GPS</h4><p>Supervise la ubicación de sus vehículos con precisión y en tiempo real.</p></div>
         </div>
-        <div class="container overflow-hidden">
-            <div class="row gy-4 justify-content-center">
-                <div class="col-6 col-md-4 col-xl-3 text-center">
-                    <div
-                        class="text-secondary bg-light px-4 py-3 px-md-6 py-md-4 px-lg-8 py-lg-5 rounded-4 h-100">
-                        <img class="img-fluid rounded-4"
-                            src="./assets/GmapServiceN.svg">
-                    </div>
-                </div>
-                <div class="col-6 col-md-4 col-xl-3 text-center">
-                    <div
-                        class="text-secondary bg-light px-4 py-3 px-md-6 py-md-4 px-lg-8 py-lg-5 rounded-4 h-100">
-                        <img class="img-fluid rounded-4"
-                            src="./assets/GmapReport.svg">
-                    </div>
-                </div>
-            </div>
+        <div class="hf">
+          <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg></div>
+          <div><h4>Extractos de transporte</h4><p>Control y generador de FUEC con verificación QR.</p></div>
         </div>
+      </div>
+    </div>
+
+    <div class="panel rv in">
+      <div class="panel-bar">
+        <span class="mono">GM-LINK // RED DE TELEMETRÍA</span>
+        <span class="live"><i></i>EN VIVO</span>
+      </div>
+      <canvas id="mapCanvas"></canvas>
+      <div class="panel-stats">
+        <div class="ps"><b id="stVeh">128</b><span>Vehículos activos</span></div>
+        <div class="ps"><b id="stKm">4 218</b><span>Km hoy</span></div>
+        <div class="ps"><b id="stVel">62</b><span>Km/h promedio</span></div>
+        <div class="ps"><b id="stEv">96.4%</b><span>Entregas a tiempo</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ TICKER ============ -->
+<div class="ticker">
+  <div class="ticker-in" id="tickerIn"></div>
+</div>
+
+<!-- ============ ECOSISTEMA GMAPSERVICE ============ -->
+<section id="ecosistema" class="ecosystem">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="kicker">// Un ecosistema tecnológico</span>
+      <h2>Tres soluciones. <span class="grad-txt">Una operación conectada.</span></h2>
+      <p>GmapService desarrolla e integra tecnología para que la información de tu flota fluya desde el GPS hasta la gestión diaria de tu empresa.</p>
+    </div>
+    <div class="brand-cards">
+      <article class="brand-card rv">
+        <div class="brand-logo gmap-logo"><img src="./assets/logos/gmapservice.png" alt="GmapService"></div>
+        <span class="brand-role">LA EMPRESA</span>
+        <h3>GmapService</h3>
+        <p>Ingeniería, desarrollo e integración de soluciones tecnológicas para transporte, logística y telemetría.</p>
+        <ul><li>Integración de datos GPS</li><li>Desarrollo de software</li><li>Analítica y automatización</li></ul>
+        <a class="brand-more" href="pages/developer.html">Explorar servicios <span>↗</span></a>
+      </article>
+      <article class="brand-card rv">
+        <div class="brand-logo ubion-logo"><img src="./assets/logos/ubion.png" alt="Ubion"></div>
+        <span class="brand-role">GEOLOCALIZACIÓN</span>
+        <h3>Ubion</h3>
+        <p>Aplicación para visualizar y monitorear vehículos, consultar ubicaciones y aprovechar la información transmitida por los dispositivos GPS.</p>
+        <ul><li>Ubicación en tiempo real</li><li>Seguimiento e histórico de recorridos</li><li>Visualización de eventos GPS</li></ul>
+        <a class="brand-more" href="landings/ubion/index.html">Conocer Ubion <span>↗</span></a>
+      </article>
+      <article class="brand-card rv">
+        <div class="brand-logo flotaq-logo"><img src="./assets/logos/flotaq.png" alt="FlotaQ"></div>
+        <span class="brand-role">GESTIÓN DE TRANSPORTE</span>
+        <h3>FlotaQ</h3>
+        <p>Software para administrar los procesos operativos y administrativos de empresas de transporte desde un solo lugar.</p>
+        <ul><li>Operaciones y gestión documental</li><li>Vehículos, conductores y mantenimiento</li><li>Indicadores y control de flota</li></ul>
+        <a class="brand-more" href="landings/flotaq/index.html">Conocer FlotaQ <span>↗</span></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INTEGRACIÓN UNIVERSAL GPS ============ -->
+<section class="integration-highlight" id="integracion-gps">
+  <div class="wrap integration-inner rv">
+    <div>
+      <span class="kicker">// Libertad de integración</span>
+      <h2>¿Ya tienes una plataforma GPS? <span class="grad-txt">No tienes que cambiarla.</span></h2>
+      <p>FlotaQ puede integrarse con cualquier plataforma de rastreo GPS que disponga de mecanismos de acceso e intercambio de datos compatibles. Centraliza la información de tus vehículos y conecta la telemetría con tus procesos de transporte.</p>
+      <div class="integration-points">
+        <span>✓ Aprovecha tu proveedor GPS actual</span>
+        <span>✓ Integra datos de diferentes plataformas</span>
+        <span>✓ Conecta posiciones, recorridos y eventos</span>
+        <span>✓ Lleva los datos a la gestión de transporte</span>
+      </div>
+      <a class="btn-a btn-p" href="#contacto">Consultar integración GPS →</a>
+    </div>
+    <div class="integration-flow">
+      <div class="flow-node"><strong>PLATAFORMAS GPS</strong><small>Tu proveedor · Tus dispositivos</small></div>
+      <div class="flow-line"><span>API · Web services · Integración</span></div>
+      <div class="flow-node ubion-node"><img src="./assets/logos/ubion.png" alt="Ubion"><small>Geolocalización y telemetría</small></div>
+      <div class="flow-line"><span>Datos conectados</span></div>
+      <div class="flow-node flotaq-node"><img src="./assets/logos/flotaq.png" alt="FlotaQ"><small>Gestión integral del transporte</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TELEMETRÍA ============ -->
+<section id="telemetria">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="kicker">// Inteligencia sobre datos GPS</span>
+      <h2>Cada señal GPS se convierte en <span class="grad-txt">información accionable</span></h2>
+      <p>Nuestros dispositivos capturan posición, velocidad, recorridos y eventos de cada vehículo. La plataforma los transforma en indicadores, alertas y reportes para que su operación nunca se detenga.</p>
+    </div>
+    <div class="dash rv">
+      <div class="panel">
+        <div class="panel-bar">
+          <span class="mono">VELOCIDAD DE FLOTA — ÚLTIMAS 60 LECTURAS</span>
+          <span class="live"><i></i>STREAMING</span>
         </div>
-    </section>
-    <!-- Sistema de Gestión de Transporte - TM -->
-    <section class="py-0 py-md-5 py-xl-8">
-        <div class="container">
-            <div class="row gy-5 gy-lg-0 align-items-lg-center">
-                <div class="col-12 col-lg-6">
-                    <img src="./assets/images/conductor.jpg"
-                        class='img-fluid rounded-4' loading='lazy' alt=''>
-                </div>
-                <div class="col-12 col-lg-6">
-                    <div class="row justify-content-xl-end">
-                        <div class="col-12 col-xl-11">
-                            <h2 class="h1 mb-3">Sistema de Gestión de Transporte
-                            </h2>
-                            <p class="lead fs-4 text-secondary mb-5">Organice la
-                                operación de la empresa con nuestra aplicación
-                                de seguimiento vehicular</p>
-                            <div class="d-flex mb-4 align-items-start">
-                                <div class="icon me-4 text-primary-emphasis">
-                                    <i class="bi bi-ui-checks fs-2"></i>
-                                </div>
-                                <div>
-                                    <h4 class="mb-3">Registros</h4>
-                                    <p class="mb-0 text-secondary">Construye los
-                                        registros de los vehículos y
-                                        conductores, para asignarlos a los
-                                        extractos de transporte.</p>
-                                </div>
-                            </div>
-                            <div class="d-flex mb-4 align-items-start">
-                                <div class="icon me-4 text-primary-emphasis">
-                                    <i class="bi bi-calendar-week fs-2"></i>
-                                </div>
-                                <div>
-                                    <h4 class="mb-3">Programación</h4>
-                                    <p class="mb-0 text-secondary">Programe los
-                                        mantenimientos de sus vehículos, tanto
-                                        preventivo como correctivo.</p>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-start">
-                                <div class="icon me-4 text-primary-emphasis">
-                                    <i class="bi bi-bell fs-2"></i>
-                                    <!-- Ajusta el tamaño con fs-2 -->
-                                </div>
-                                <div>
-                                    <h4 class="mb-3">Notificación</h4>
-                                    <p class="mb-0 text-secondary">Recibe
-                                        notificaciones por correo electrónico de
-                                        los eventos importantes de sus activos u
-                                        operación.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <canvas id="chartCanvas"></canvas>
+      </div>
+      <div class="panel">
+        <div class="panel-bar"><span class="mono">EVENTOS EN TIEMPO REAL</span><span class="live"><i></i>RECIBIENDO</span></div>
+        <div class="feed" id="feed"></div>
+      </div>
+    </div>
+    <div class="stats rv" style="margin-top:22px">
+      <div class="stat"><b><span class="cnt" data-to="2400">0</span>+</b><span>Vehículos monitoreados en simultáneo</span></div>
+      <div class="stat"><b><span class="cnt" data-to="15">0</span> s</b><span>Frecuencia de actualización de posición</span></div>
+      <div class="stat"><b><span class="cnt" data-to="99">0</span>.9%</b><span>Disponibilidad de la plataforma</span></div>
+      <div class="stat"><b>24/7</b><span>Monitoreo y soporte continuo</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ APLICACIONES ============ -->
+<section id="aplicaciones" style="background:rgba(7,13,26,.45)">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="kicker">// Aplicaciones</span>
+      <h2>Soluciones de telemetría para <span class="grad-txt">transporte y logística</span></h2>
+      <p>Somos una empresa de desarrollo de software orientada a la gestión del transporte especial y la logística, con monitoreo vehicular, mantenimiento e integración con otras plataformas.</p>
+    </div>
+    <div class="cards rv">
+      <div class="card">
+        <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg></div>
+        <h3>Sistema de Gestión de Transporte</h3>
+        <p>Organice toda la operación de su empresa con seguimiento vehicular en vivo, rutas históricas y panel de control unificado.</p>
+        <span class="tag">fleet-tracking</span>
+      </div>
+      <div class="card">
+        <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
+        <h3>Registros inteligentes</h3>
+        <p>Construya los registros de vehículos y conductores y asígnelos automáticamente a los extractos de transporte.</p>
+        <span class="tag">base-de-datos</span>
+      </div>
+      <div class="card">
+        <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
+        <h3>Mantenimiento programado</h3>
+        <p>Programe mantenimientos preventivos y correctivos basados en kilómetros reales recorridos por cada activo.</p>
+        <span class="tag">predictivo</span>
+      </div>
+      <div class="card">
+        <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div>
+        <h3>Notificaciones inteligentes</h3>
+        <p>Reciba alertas por correo de los eventos importantes de sus activos: geocercas, velocidad, mantenimientos y más.</p>
+        <span class="tag">alertas</span>
+      </div>
+      <div class="card">
+        <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
+        <h3>Integraciones API</h3>
+        <p>Conecte GmapService con los sistemas que ya usa su empresa mediante APIs y servicios web.</p>
+        <span class="tag">rest-api</span>
+      </div>
+      <div class="card">
+        <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+        <h3>Dashboards y KPIs</h3>
+        <p>Indicadores clave de rendimiento de su flota: puntualidad, horas trabajadas y desempeño de conductores.</p>
+        <span class="tag">business-intel</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PLATAFORMA ============ -->
+<section id="plataforma">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="kicker">// La plataforma</span>
+      <h2>Una operación conectada de principio a fin</h2>
+      <p>Priorizamos la simplicidad. Tres pilares que convierten los datos de sus GPS en una operación eficiente.</p>
+    </div>
+    <div class="steps rv">
+      <div class="step">
+        <span class="num">01</span>
+        <h3>Indicadores a la mano</h3>
+        <p>Visualización rápida y actualizada de los KPIs de su flota para tomar decisiones informadas.</p>
+        <ul>
+          <li>KPIs de flota en tiempo real</li>
+          <li>Actualización automática de indicadores</li>
+          <li>Decisiones basadas en datos</li>
+        </ul>
+      </div>
+      <div class="step">
+        <span class="num">02</span>
+        <h3>Generador de extractos</h3>
+        <p>Cree extractos según los requerimientos del ministerio de transporte, con toda la información de los viajes.</p>
+        <ul>
+          <li>Detalles completos de viajes y tiempos</li>
+          <li>Exportación en múltiples formatos</li>
+          <li>Verificación QR de FUEC</li>
+        </ul>
+      </div>
+      <div class="step">
+        <span class="num">03</span>
+        <h3>Gestión de hojas de vida</h3>
+        <p>Registro completo de cada vehículo y conductor: vinculación, mantenimiento, reparaciones y documentos.</p>
+        <ul>
+          <li>Programación y seguimiento de mantenimiento</li>
+          <li>Documentación centralizada y segura</li>
+          <li>Pólizas y permisos siempre a la mano</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="preguntas" style="background:rgba(7,13,26,.45)">
+  <div class="wrap">
+    <div class="sec-head rv" style="text-align:center;margin-left:auto;margin-right:auto">
+      <span class="kicker">// FAQ</span>
+      <h2>¿En qué podemos <span class="grad-txt">asistirte</span>?</h2>
+      <p>Soluciones a las preguntas más comunes. Si necesitas más ayuda, escríbenos.</p>
+    </div>
+    <div class="faq rv">
+      <details open>
+        <summary>¿Cuál es el proceso de pago del servicio?</summary>
+        <div class="ans">Ofrecemos varias opciones para tu comodidad:
+          <ul><li>Pago en efectivo en nuestras oficinas.</li><li>Transferencias bancarias a nuestras cuentas.</li><li>Pagos en línea a través de nuestro portal.</li><li>Transferencias a través de Nequi.</li></ul>
         </div>
-    </section>
-    <section class="p-5">
-        <!-- ¿Qué puedes hacer en nuestra plataforma? -->
-        <div class="container-xxl bg-light my-6 py-5 container-with-margin-tab rounded-4"
-            id="overview">
-            <div class="container">
-                <div>
-                    <h1 class="text-center mb-0">¿Qué puedes hacer en nuestras
-                        plataformas?</h1>
-                </div>
-                <br>
-                <div>
-                    <h3 class="text-center mb-0">Priorizamos la simplicidad en
-                        nuestras aplicaciones</h3>
-                </div>
-                <div class="row g-5 py-5 align-items-center">
-                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
-                        <div class="d-flex align-items-center mb-4">
-                            <h1 class="mb-0">01</h1>
-                            <span class="bg-primary mx-2"
-                                style="width: 30px; height: 2px;"></span>
-                            <h3 class="mb-3">Indicadores a la mano</h3>
-                        </div>
-                        <p class="mb-4">Este sistema proporciona una
-                            visualización rápida y actualizada de los
-                            indicadores clave de rendimiento (KPIs) de una flota
-                            de transporte. Permite a los usuarios acceder
-                            fácilmente a información crítica, como la
-                            puntualidad, horas trabajadas y el rendimiento de
-                            los conductores, para tomar decisiones informadas y
-                            mejorar la eficiencia operativa.</p>
-                        <ul>
-                            <li class="fa fa-check-circle me-3"><b>Visualización
-                                    rápida:</b> Accede fácilmente a los
-                                indicadores clave de rendimiento (KPIs) de tu
-                                flota de transporte</li>
-                            <li class="fa fa-check-circle me-3"><b>Actualización
-                                    en tiempo real:</b> Los indicadores se
-                                actualizan automáticamente, lo que te permite
-                                tomar decisiones basadas en datos actualizados.
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <img class="img-fluid rounded-4"
-                            src="./assets/images/dashboard.png">
-                    </div>
-                </div>
-                <div
-                    class="row g-5 py-5 align-items-center flex-column-reverse flex-lg-row">
-                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <img class="img-fluid rounded-4"
-                            src="./assets/images/vehicle.png">
-                    </div>
-                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
-                        <div class="d-flex align-items-center mb-4">
-                            <h1 class="mb-0">02</h1>
-                            <span class="bg-primary mx-2"
-                                style="width: 30px; height: 2px;"></span>
-                            <h5 class="mb-0">Generador de extractos</h5>
-                        </div>
-                        <p class="mb-4">Esta herramienta facilita la creación de
-                            extractos según los requerimientos del ministerio de
-                            transporte. Permite a los usuarios generar informes
-                            que incluyen información sobre los viajes
-                            realizados.</p>
-                        <ul>
-                            <li class="fa fa-check-circle me-3"><b>Detalles
-                                    completos:</b> Los extractos incluyen
-                                información detallada sobre los viajes, tiempos,
-                                y datos del vehículo.</li>
-                            <li class="fa fa-check-circle me-3">
-                                <b>Exportación:</b> Puedes exportar los
-                                extractos en varios formatos para su uso
-                                posterior o para compartir con otros.
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="row g-5 py-5 align-items-center">
-                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
-                        <div class="d-flex align-items-center mb-4">
-                            <h1 class="mb-0">03</h1>
-                            <span class="bg-primary mx-2"
-                                style="width: 30px; height: 2px;"></span>
-                            <h5 class="mb-0">Gestión de hojas de vida</h5>
-                        </div>
-                        <p class="mb-4">Este sistema permite a los usuarios
-                            mantener un registro completo de cada vehículo o
-                            conductor. Desde la vinculación inicial hasta el
-                            mantenimiento programado y las reparaciones, esta
-                            herramienta centraliza la información y ayuda a
-                            garantizar que los vehículos estén en óptimas
-                            condiciones. También puede incluir documentación
-                            importante, como pólizas y permisos.</p>
-                        <ul>
-                            <li class="fa fa-check-circle me-3"><b>Programación
-                                    de mantenimiento:</b> Programa y realiza un
-                                seguimiento del mantenimiento regular de tus
-                                vehículos.</li>
-                            <li class="fa fa-check-circle me-3"><b>Documentación
-                                    centralizada:</b> Almacena de forma segura y
-                                accede fácilmente a la documentación importante
-                                de cada vehículo, como certificados y permisos.
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <img src="./assets/images/extract.png"
-                            class="img-fluid rounded-4">
-                    </div>
-                </div>
-                <h2 class="text-center mb-0">... Mucho más.</h2>
-            </div>
-        </div>
-    </section>
-    <!-- Session de preguntas -->
-    <section
-        class="bsb-faq-2 py-5 rounded-5 container-with-margin-tab-web container-fluid"
-        id="preguntas" style="             background-color: #05111e;">
-        <div class="container">
-            <div class="row gy-5 gy-lg-0">
-                <div class="col-12 col-lg-6">
-                    <h2 class="h1 mb-3 text-light">¿En qué podemos asistirte?
-                        Estamos aquí para ofrecerte soluciones a las preguntas
-                        más comunes.</h2>
-                    <p class="lead fs-4 text-light mb-4">Esperamos que hayas
-                        encontrado la respuesta que buscabas. Si necesitas más
-                        ayuda, puedes explorar nuevas preguntas a través de
-                        correo electrónico o realizando una solicitud en nuestro
-                        formulario.</p>
-                    <a href="https://6re32.hatchboxapp.com/home/form"
-                        target="_blank"
-                        class="btn btn-lg bsb-btn-2xl btn-warning">Solicitudes</a>
-                </div>
-                <div class="col-12 col-lg-6">
-                    <div class="row justify-content-xl-end">
-                        <div class="col-12 col-xl-11">
-                            <div class="accordion accordion-flush"
-                                id="accordionExample">
-                                <div
-                                    class="accordion-item mb-4 shadow-sm rounded-3">
-                                    <h2 class="accordion-header"
-                                        id="headingOne">
-                                        <button
-                                            class="accordion-button bg-transparent fw-bold"
-                                            type="button"
-                                            data-bs-toggle="collapse"
-                                            data-bs-target="#collapseOne"
-                                            aria-expanded="true"
-                                            aria-controls="collapseOne">
-                                            ¿Cuál es el proceso de pago del
-                                            servicio?
-                                        </button>
-                                    </h2>
-                                    <div id="collapseOne"
-                                        class="accordion-collapse collapse show "
-                                        aria-labelledby="headingOne"
-                                        data-bs-parent="#accordionExample">
-                                        <div class="accordion-body ">
-                                            <p>Ofrecemos varias opciones para tu
-                                                comodidad:</p>
-                                            <ul>
-                                                <li><b>Pago en efectivo en
-                                                        nuestras oficinas:</b>
-                                                    Puedes realizar el pago
-                                                    directamente en nuestras
-                                                    oficinas.</li>
-                                                <li><b>Transferencias
-                                                        bancarias:</b> Aceptamos
-                                                    transferencias a nuestras
-                                                    cuentas bancarias.</li>
-                                                <li><b>Pagos en línea a través
-                                                        de nuestro portal:</b>
-                                                    Realiza pagos de forma
-                                                    segura y conveniente desde
-                                                    nuestro portal en línea.
-                                                </li>
-                                                <li><b>Transferencias a través
-                                                        de Nequi:</b> También
-                                                    aceptamos pagos a través de
-                                                    Nequi, una plataforma de
-                                                    transferencias electrónicas.
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div
-                                    class="accordion-item mb-4 shadow-sm rounded-3">
-                                    <h2 class="accordion-header"
-                                        id="headingTwo">
-                                        <button
-                                            class="accordion-button collapsed bg-transparent fw-bold"
-                                            type="button"
-                                            data-bs-toggle="collapse"
-                                            data-bs-target="#collapseTwo"
-                                            aria-expanded="false"
-                                            aria-controls="collapseTwo">
-                                            ¿Se puede integrar GmapService con
-                                            otras aplicaciones?
-                                        </button>
-                                    </h2>
-                                    <div id="collapseTwo"
-                                        class="accordion-collapse collapse"
-                                        aria-labelledby="headingTwo">
-                                        <div class="accordion-body">
-                                            Sí, GmapService se puede integrar
-                                            con otras aplicaciones mediante APIs
-                                            y servicios web, lo que te permite
-                                            conectarla con sistemas existentes
-                                            en tu empresa y compartir datos de
-                                            manera eficiente.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div
-                                    class="accordion-item mb-4 shadow-sm rounded-3">
-                                    <h2 class="accordion-header"
-                                        id="headingThree">
-                                        <button
-                                            class="accordion-button collapsed bg-transparent fw-bold"
-                                            type="button"
-                                            data-bs-toggle="collapse"
-                                            data-bs-target="#collapseThree"
-                                            aria-expanded="false"
-                                            aria-controls="collapseThree">
-                                            ¿Cómo ayuda GmapService a mejorar la
-                                            eficiencia de mi empresa de
-                                            transporte?
-                                        </button>
-                                    </h2>
-                                    <div id="collapseThree"
-                                        class="accordion-collapse collapse"
-                                        aria-labelledby="headingThree">
-                                        <div class="accordion-body">
-                                            GmapService le permite tener un
-                                            control detallado de cada vehículo
-                                            de su flota, lo que le ayuda a
-                                            identificar oportunidades de mejora,
-                                            reducir costos operativos y aumentar
-                                            la eficiencia en la gestión de su
-                                            empresa de transporte.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div
-                                    class="accordion-item mb-4 shadow-sm rounded-3">
-                                    <h2 class="accordion-header"
-                                        id="headingFour">
-                                        <button
-                                            class="accordion-button collapsed bg-transparent fw-bold"
-                                            type="button"
-                                            data-bs-toggle="collapse"
-                                            data-bs-target="#collapseFour"
-                                            aria-expanded="false"
-                                            aria-controls="collapseFour">
-                                            ¿Puedo personalizar GmapService para
-                                            que se adapte a las necesidades
-                                            específicas de mi empresa?
-                                        </button>
-                                    </h2>
-                                    <div id="collapseFour"
-                                        class="accordion-collapse collapse"
-                                        aria-labelledby="headingFour">
-                                        <div class="accordion-body">
-                                            Sí, GmapService es altamente
-                                            personalizable, lo que le permite
-                                            adaptar la aplicación a las
-                                            necesidades específicas de su
-                                            empresa de transporte, añadiendo o
-                                            modificando funcionalidades según
-                                            sea necesario, este prodedimiento se
-                                            realiza de la mano con el equipo de
-                                            desarrollo.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item shadow-sm rounded-3">
-                                    <h2 class="accordion-header"
-                                        id="headingFive">
-                                        <button
-                                            class="accordion-button collapsed bg-transparent fw-bold"
-                                            type="button"
-                                            data-bs-toggle="collapse"
-                                            data-bs-target="#collapseFive"
-                                            aria-expanded="false"
-                                            aria-controls="collapseFive">
-                                            ¿Qué sucede si estoy usando una
-                                            aplicación y quiero cambiarme a
-                                            GmapService?
-                                        </button>
-                                    </h2>
-                                    <div id="collapseFive"
-                                        class="accordion-collapse collapse"
-                                        aria-labelledby="headingFive">
-                                        <div class="accordion-body">
-                                            <p>Si ya estás usando un aplicativo
-                                                y deseas cambiarte a
-                                                GmapService, nuestro equipo te
-                                                brindará el soporte necesario
-                                                para una transición sin
-                                                contratiempos. Podemos ayudarte
-                                                a migrar tus datos y a
-                                                configurar GmapService para que
-                                                se adapte a tus necesidades
-                                                específicas.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Clientes-->
-    <section class="py-3 py-md-5 py-xl-8">
-        <div class="container">
-            <div class="row justify-content-md-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="75" height="75"
-                    fill="currentColor" class="bi bi-person-check"
-                    viewBox="0 0 16 16">
-                    <path
-                        d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m1.679-4.493-1.335 2.226a.75.75 0 0 1-1.174.144l-.774-.773a.5.5 0 0 1 .708-.708l.547.548 1.17-1.951a.5.5 0 1 1 .858.514M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4" />
-                    <path
-                        d="M8.256 14a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1z" />
-                </svg>
-                <div class="col-12 col-md-10 col-lg-8 col-xl-7 col-xxl-6">
-                    <h2
-                        class="fs-6 text-secondary mb-2 text-uppercase text-center">
-                    </h2>
-                    <h2 class="mb-4 display-5 text-center">Un software eficiente
-                        para todos nuestros clientes.</h2>
-                    <p class="fs-5 text-secondary mb-5 text-center">Nuestros
-                        clientes son nuestra principal prioridad y estamos
-                        comprometidos a brindarles el más alto nivel de
-                        servicio.</p>
-                    <hr class="w-50 mx-auto mb-5 mb-xl-9 border-dark-subtle">
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Contactos -->
-    <section class="py-3 py-md-5" id="contacto">
-        <div class="container">
-            <div class="row gy-3 gy-md-4 gy-lg-0 align-items-lg-center">
-                <div class="col-12 col-lg-6">
-                    <img class="img-fluid rounded-4" loading="lazy"
-                        src="./assets/images/office-min.jpg" alt="Get in touch">
-                </div>
-                <div class="col-12 col-lg-6">
-                    <div class="row justify-content-xl-center">
-                        <div class="col-12 col-xl-11">
-                            <h2 class="h1 mb-3">Escríbenos</h2>
-                            <p class="lead fs-4 text-secondary mb-5">Puedes
-                                ponerte en contacto con nosotros para más
-                                información, así como para conocer sobre la
-                                inversión en nuestro producto.</p>
-                            <div class="d-flex mb-4">
-                                <!--<div class="me-4 text-primary-emphasis">
-                <i class="bi bi-whatsapp fs-2"></i>
-              </div>
-              <div>
-                <h4 class="mb-3">WhatsApp</h4>
-                <p class="mb-0">
-                  <a class="link-secondary text-decoration-none" href="tel:+15057922430">(+57) 318-228-2323</a>
-                </p>
-              </div>-->
-                            </div>
-                            <div class="d-flex">
-                                <div class="me-4 text-primary-emphasis">
-                                    <!-- Icono de Font Awesome para Correo -->
-                                    <i class="bi bi-envelope-fill fs-2"></i>
-                                </div>
-                                <div>
-                                    <h4 class="mb-3">Correo</h4>
-                                    <p>
-                                        <a class="link-secondary text-decoration-none"
-                                            href="mailto:notificaciones&#64;gmapservice&#46;com">
-                                            notificaciones&#64;gmapservice&#46;com
-                                        </a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-</body>
-<!-- Footer -->
-<footer class="footer">
-    <section class="py-4"
-        style="border-top-left-radius: 50px; 
-                  border-top-right-radius: 50px; 
-                  background-color: #05111e; /* Azul oscuro para la sección */">
-        <div class="container">
-            <div class="row gy-5 gy-md-0">
-                <div class="col-md-7">
-                    <div class="copyright text-center text-md-start"
-                        style="color: white;">
-                        2024 - GmapService
-                    </div>
-                    <div class="credits text-secondary text-center text-md-start mt-2 fs-7"
-                        style="color: #99ccff;">
-                        <a href="https://www.freepik.es/"
-                            class="link-secondary text-decoration-none"
-                            style="color: #99ccff;">Freepik Images </a>
-                    </div>
-                    <div class="copyright text-center text-md-start credits text-secondary"
-                        style="color: white;">
-                        Bootstrap &#129505
-                    </div>
-                </div>
-                <div class="col-md-5">
-                    <ul
-                        class="nav justify-content-center justify-content-md-end">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#!"
-                                style="color: #ffc107;">
-                                <i class="bi bi-facebook fs-4"></i>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#!"
-                                style="color: #ffc107;">
-                                <i class="bi bi-linkedin fs-4"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
+      </details>
+      <details>
+        <summary>¿Se puede integrar GmapService con otras aplicaciones?</summary>
+        <div class="ans">Sí, mediante APIs y servicios web puedes conectarla con los sistemas existentes de tu empresa y compartir datos de manera eficiente.</div>
+      </details>
+      <details>
+        <summary>¿Cómo ayuda GmapService a mejorar la eficiencia de mi empresa?</summary>
+        <div class="ans">Le permite tener control detallado de cada vehículo de su flota, identificar oportunidades de mejora, reducir costos operativos y aumentar la eficiencia de la gestión.</div>
+      </details>
+      <details>
+        <summary>¿Puedo personalizar GmapService para mi empresa?</summary>
+        <div class="ans">Sí, es altamente personalizable. Nuestro equipo de desarrollo añade o modifica funcionalidades según tus necesidades específicas.</div>
+      </details>
+      <details>
+        <summary>¿Qué sucede si estoy usando otra aplicación y quiero cambiarme?</summary>
+        <div class="ans">Nuestro equipo te brindará soporte para una transición sin contratiempos: migramos tus datos y configuramos la plataforma a tu medida.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTO ============ -->
+<section id="contacto">
+  <div class="wrap contact">
+    <div class="rv">
+      <span class="kicker">// Contacto</span>
+      <h2 style="font-size:clamp(1.8rem,3.4vw,2.6rem);margin-bottom:16px">Hablemos de <span class="grad-txt">tu flota</span></h2>
+      <p style="color:var(--mut)">Escríbenos para más información y para conocer la inversión en nuestro producto. Un software eficiente para todos nuestros clientes: son nuestra principal prioridad.</p>
+      <div class="c-info">
+        <div class="c-item"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><span>notificaciones@gmapservice.com</span></div>
+        <div class="c-item"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><span>Soporte y monitoreo 24/7</span></div>
+        <div class="c-item"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><span>Operación en toda Colombia</span></div>
+      </div>
+    </div>
+    <form class="form rv" onsubmit="event.preventDefault();this.querySelector('button').textContent='✓ Mensaje enviado';">
+      <div class="form-row">
+        <input type="text" placeholder="Nombre" required>
+        <input type="text" placeholder="Empresa" required>
+      </div>
+      <input type="email" placeholder="Correo electrónico" required>
+      <input type="tel" placeholder="Teléfono">
+      <textarea rows="4" placeholder="Cuéntanos sobre tu flota (nº de vehículos, tipo de operación...)" required></textarea>
+      <button class="btn-a btn-p" type="submit" style="justify-content:center">Enviar mensaje</button>
+    </form>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+
+<section class="whatsapp-contact" aria-label="Contacto por WhatsApp">
+  <div class="wrap whatsapp-contact-inner">
+    <div class="whatsapp-contact-copy">
+      <span class="whatsapp-kicker">¿Hablamos?</span>
+      <h2>Conversemos sobre tu operación.</h2>
+      <p>Escríbenos por WhatsApp y te ayudaremos a encontrar la solución tecnológica que necesitas.</p>
+    </div>
+    <a class="whatsapp-pill" href="https://wa.me/573167287391?text=Hola%2C%20quiero%20conocer%20m%C3%A1s%20sobre%20sus%20soluciones." target="_blank" rel="noopener noreferrer" aria-label="Contactar a GmapService por WhatsApp al 3167287391">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16.04 3C8.88 3 3.05 8.75 3.05 15.83c0 2.27.6 4.49 1.74 6.44L3 29l6.94-1.8a13.1 13.1 0 0 0 6.1 1.5h.01c7.16 0 12.99-5.75 12.99-12.83 0-3.43-1.36-6.65-3.83-9.08A13.02 13.02 0 0 0 16.04 3zm0 23.52h-.01c-1.9 0-3.76-.5-5.39-1.44l-.39-.23-4.12 1.07 1.1-4-.25-.4a10.57 10.57 0 0 1-1.63-5.69c0-5.86 4.8-10.62 10.7-10.62 2.86 0 5.55 1.1 7.57 3.1a10.5 10.5 0 0 1 3.14 7.52c0 5.86-4.8 10.62-10.72 10.62zm5.88-7.95c-.32-.16-1.9-.93-2.2-1.03-.3-.11-.51-.16-.73.16-.21.32-.83 1.03-1.02 1.24-.19.22-.38.24-.7.08-.32-.16-1.35-.5-2.57-1.58-.95-.83-1.59-1.86-1.78-2.18-.19-.32-.02-.49.14-.65.14-.14.32-.38.48-.57.16-.19.21-.32.32-.54.1-.21.05-.4-.03-.56-.08-.16-.73-1.73-1-2.37-.26-.62-.53-.54-.73-.55h-.62c-.22 0-.57.08-.87.4-.3.32-1.14 1.1-1.14 2.67s1.17 3.1 1.33 3.32c.16.21 2.3 3.48 5.57 4.88.78.34 1.39.54 1.87.69.79.25 1.5.22 2.07.13.63-.1 1.9-.77 2.17-1.51.27-.75.27-1.4.19-1.52-.08-.13-.3-.21-.62-.37z"/></svg>
+      <span>WhatsApp : 3167287391</span>
+      <span class="whatsapp-arrow">↗</span>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <a href="#inicio" class="brand-nav"><img src="./assets/logos/gmapservice.png" alt="GmapService"></a>
+    <span>© 2026 GmapService — Tecnología, telemetría e integración de flotas</span>
+    <div class="social">
+      <a href="#" aria-label="GitHub"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.72-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.16 1.18a11 11 0 0 1 5.76 0c2.2-1.49 3.16-1.18 3.16-1.18.62 1.59.23 2.76.11 3.05.73.81 1.18 1.83 1.18 3.09 0 4.42-2.7 5.39-5.26 5.68.41.36.78 1.05.78 2.13 0 1.54-.02 2.78-.02 3.16 0 .31.21.68.8.56A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg></a>
+      <a href="#" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a>
+    </div>
+  </div>
 </footer>
+
+<script>
+
+/* ================= NAV ================= */
+const nav = document.getElementById('nav');
+addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 40));
+const burger = document.getElementById('burger'), navLinks = document.getElementById('navLinks');
+burger.onclick = () => navLinks.classList.toggle('open');
+navLinks.querySelectorAll('a').forEach(a => a.onclick = () => navLinks.classList.remove('open'));
+
+/* ================= REVEAL ================= */
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+}), { threshold: .12 });
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+/* ================= CONTADORES ================= */
+const cio = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return;
+  const el = e.target, to = +el.dataset.to, t0 = performance.now();
+  (function f(t){ const p = Math.min((t - t0)/1600, 1), ease = 1 - Math.pow(1-p, 3);
+    el.textContent = Math.round(to * ease).toLocaleString('es-CO');
+    if (p < 1) requestAnimationFrame(f); })(t0);
+  cio.unobserve(el);
+}), { threshold: .6 });
+document.querySelectorAll('.cnt').forEach(el => cio.observe(el));
+
+/* ================= TICKER ================= */
+const items = ['<b>TRK-0182</b> ruta BOG → MED · 68 km/h','<em>GEOCERCA</em> entrada zona logística Palmira','<b>TRK-0347</b> FUEC generado · QR verificado','<em>ALERTA</em> mantenimiento preventivo TRK-0119','<b>TRK-0591</b> 4h 12m de operación hoy','<em>ENTREGA</em> a tiempo · 96.4% flota','<b>TRK-0773</b> velocidad nominal · vía principal','<em>INTEGRACIÓN</em> API · datos sincronizados'];
+document.getElementById('tickerIn').innerHTML = (items.join(' &nbsp;·&nbsp; ') + ' &nbsp;·&nbsp; ').repeat(2);
+
+/* ================= FEED DE EVENTOS ================= */
+const cities = ['Bogotá','Medellín','Cali','Barranquilla','Bucaramanga','Pereira','Ibagué'];
+const evTypes = [
+  () => `<b>GEOCERCA</b> entrada confirmada · <em>${pick(cities)}</em>`,
+  () => `<b>VELOCIDAD</b> ${55+~~(Math.random()*40)} km/h reportado · <em>TRK-0${100+~~(Math.random()*899)}</em>`,
+  () => `<b>FUEC</b> extracto generado · verificación <em>QR OK</em>`,
+  () => `<b>MANTENIMIENTO</b> preventivo programado · <em>${pick(cities)}</em>`,
+  () => `<b>IGNICIÓN</b> vehículo encendido · <em>TRK-0${100+~~(Math.random()*899)}</em>`,
+  () => `<b>ENTREGA</b> completada a tiempo · <em>${pick(cities)}</em>`,
+];
+const pick = a => a[~~(Math.random()*a.length)];
+const feed = document.getElementById('feed');
+function pushEvent(){
+  const d = document.createElement('div');
+  const h = new Date();
+  d.innerHTML = `<span style="color:var(--violet)">${h.toLocaleTimeString('es-CO',{hour12:false})}</span> ${pick(evTypes)()}`;
+  feed.prepend(d);
+  while (feed.children.length > 9) feed.lastChild.remove();
+}
+for (let i=0;i<7;i++) pushEvent();
+setInterval(pushEvent, 3200);
+
+/* ================= STATS EN VIVO ================= */
+const S = { veh:128, km:4218, vel:62, ent:96.4 };
+const fmt = n => n.toLocaleString('es-CO');
+setInterval(() => {
+  S.veh = Math.max(100, S.veh + (Math.random()<.5?-1:1)*~~(Math.random()*3));
+  S.km += ~~(Math.random()*9);
+  S.vel = Math.max(35, Math.min(90, S.vel + ~~(Math.random()*7)-3));
+  S.ent = Math.max(92, Math.min(99.8, S.ent + (Math.random()-.5)*.3));
+  stVeh.textContent = S.veh; stKm.textContent = fmt(S.km);
+  stVel.textContent = S.vel; stEv.textContent = S.ent.toFixed(1)+'%';
+}, 2600);
+
+/* ================= CANVAS MAPA GPS ================= */
+const mc = document.getElementById('mapCanvas'), mx = mc.getContext('2d');
+let MW, MH;
+function sizeMap(){ const r = mc.getBoundingClientRect(); MW = mc.width = r.width*devicePixelRatio; MH = mc.height = 290*devicePixelRatio; }
+sizeMap(); addEventListener('resize', sizeMap);
+
+const dots = Array.from({length: 14}, (_,i) => ({
+  x: Math.random(), y: Math.random(),
+  a: Math.random()*Math.PI*2, sp: .0006 + Math.random()*.0012,
+  trail: [], hue: Math.random()<.5 ? '75,131,165' : '245,181,27'
+}));
+const beacons = Array.from({length:5}, () => ({x:.1+Math.random()*.8, y:.15+Math.random()*.7, ph:Math.random()*Math.PI*2}));
+
+function drawMap(t){
+  mx.clearRect(0,0,MW,MH);
+  // rejilla
+  mx.strokeStyle = 'rgba(120,180,255,.08)'; mx.lineWidth = 1;
+  const g = 40*devicePixelRatio;
+  for(let x=0;x<MW;x+=g){ mx.beginPath(); mx.moveTo(x,0); mx.lineTo(x,MH); mx.stroke(); }
+  for(let y=0;y<MH;y+=g){ mx.beginPath(); mx.moveTo(0,y); mx.lineTo(MW,y); mx.stroke(); }
+  // geocercas
+  beacons.forEach(b => {
+    const bx=b.x*MW, by=b.y*MH;
+    const pr = ((t/1400 + b.ph) % 1);
+    mx.beginPath(); mx.arc(bx,by,(20+pr*70)*devicePixelRatio,0,7);
+    mx.strokeStyle = `rgba(245,181,27,${.35*(1-pr)})`; mx.lineWidth = 1.5*devicePixelRatio; mx.stroke();
+    mx.beginPath(); mx.arc(bx,by,4*devicePixelRatio,0,7);
+    mx.fillStyle = 'rgba(245,181,27,.9)'; mx.fill();
+  });
+  // vehículos con estela
+  dots.forEach(d => {
+    d.a += (Math.random()-.5)*.25;
+    d.x += Math.cos(d.a)*d.sp; d.y += Math.sin(d.a)*d.sp;
+    if(d.x<.03||d.x>.97) d.a = Math.PI-d.a;
+    if(d.y<.06||d.y>.94) d.a = -d.a;
+    d.x = Math.min(.97, Math.max(.03, d.x)); d.y = Math.min(.94, Math.max(.06, d.y));
+    d.trail.push([d.x,d.y]); if(d.trail.length>34) d.trail.shift();
+    // estela
+    if(d.trail.length>2){
+      mx.beginPath();
+      d.trail.forEach(([px,py],i)=> i?mx.lineTo(px*MW,py*MH):mx.moveTo(px*MW,py*MH));
+      mx.strokeStyle = `rgba(${d.hue},.35)`; mx.lineWidth = 1.4*devicePixelRatio; mx.stroke();
+    }
+    // punto
+    const px=d.x*MW, py=d.y*MH;
+    mx.beginPath(); mx.arc(px,py,3*devicePixelRatio,0,7);
+    mx.fillStyle = `rgba(${d.hue},1)`; mx.shadowColor=`rgba(${d.hue},.8)`; mx.shadowBlur=10*devicePixelRatio; mx.fill(); mx.shadowBlur=0;
+  });
+  requestAnimationFrame(drawMap);
+}
+requestAnimationFrame(drawMap);
+
+/* ================= GRÁFICA DE VELOCIDAD ================= */
+const cc = document.getElementById('chartCanvas'), cx = cc.getContext('2d');
+let CW, CH;
+function sizeChart(){ const r = cc.getBoundingClientRect(); CW = cc.width = r.width*devicePixelRatio; CH = cc.height = 260*devicePixelRatio; }
+sizeChart(); addEventListener('resize', sizeChart);
+const data = Array.from({length:60}, (_,i)=> 60 + Math.sin(i/6)*14 + (Math.random()-.5)*8);
+function drawChart(){
+  data.shift();
+  data.push(Math.max(25, Math.min(95, data[data.length-1] + (Math.random()-.5)*9)));
+  cx.clearRect(0,0,CW,CH);
+  // rejilla horizontal
+  cx.strokeStyle='rgba(120,180,255,.08)'; cx.lineWidth=1;
+  for(let i=1;i<4;i++){ const y=CH*i/4; cx.beginPath(); cx.moveTo(0,y); cx.lineTo(CW,y); cx.stroke(); }
+  const step = CW/(data.length-1);
+  // área
+  const grad = cx.createLinearGradient(0,0,0,CH);
+  grad.addColorStop(0,'rgba(75,131,165,.30)'); grad.addColorStop(1,'rgba(245,181,27,0)');
+  cx.beginPath();
+  data.forEach((v,i)=>{ const x=i*step, y=CH-(v/100)*CH; i?cx.lineTo(x,y):cx.moveTo(x,y); });
+  cx.lineTo(CW,CH); cx.lineTo(0,CH); cx.closePath(); cx.fillStyle=grad; cx.fill();
+  // línea
+  cx.beginPath();
+  data.forEach((v,i)=>{ const x=i*step, y=CH-(v/100)*CH; i?cx.lineTo(x,y):cx.moveTo(x,y); });
+  const lg = cx.createLinearGradient(0,0,CW,0);
+  lg.addColorStop(0,'#4b83a5'); lg.addColorStop(1,'#f5b51b');
+  cx.strokeStyle=lg; cx.lineWidth=2*devicePixelRatio; cx.stroke();
+  // punto final
+  const lx=(data.length-1)*step, ly=CH-(data[data.length-1]/100)*CH;
+  cx.beginPath(); cx.arc(lx,ly,4*devicePixelRatio,0,7); cx.fillStyle='#f5b51b';
+  cx.shadowColor='#f5b51b'; cx.shadowBlur=12*devicePixelRatio; cx.fill(); cx.shadowBlur=0;
+}
+setInterval(drawChart, 900); drawChart();
+
+/* Menú desplegable de servicios */
+
+const drop=document.querySelector('.nav-dropdown'), dropButton=document.querySelector('.nav-drop-trigger');
+if(dropButton) dropButton.addEventListener('click',()=>{const open=drop.classList.toggle('expanded');dropButton.setAttribute('aria-expanded',String(open));});
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{drop?.classList.remove('expanded');dropButton?.setAttribute('aria-expanded','false');}));
+document.addEventListener('click',e=>{if(drop && !drop.contains(e.target)){drop.classList.remove('expanded');dropButton?.setAttribute('aria-expanded','false');}});
+
+</script>
+</body>
 </html>

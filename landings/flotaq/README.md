@@ -1,0 +1,1 @@
+Landing Flotaq integrada a GmapService. CSS y JavaScript propios, aislados de la página principal. Abre index.html desde el sitio raíz o navega desde la tarjeta del ecosistema.\n

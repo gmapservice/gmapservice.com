@@ -1,168 +1,33 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>GmapService</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
-
-    <!-- Bootstrap Icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
-    />
-    <link rel="stylesheet" href="./assets/css/style.css" />
-    <!-- Importa el archivo CSS -->
-
-    <link rel="icon" href="./assets/icon.svg" type="image/svg+xml" />
-  </head>
-  <body>
-    <section
-      class="py-3 position-relative"
-      id="inicio"
-      style="
-        background-image: url('./assets/images/navbar.jpg');
-        background-size: cover;
-        background-position: center;
-        background-color: white;
-        border-bottom-left-radius: 50px;
-        border-bottom-right-radius: 50px;
-      "
-    >
-      <nav
-        class="navbar navbar-expand-md navbar-light sticky-top"
-        style="background-color: rgba(0, 0, 0, 0)"
-      >
-        <div class="container">
-          <a class="navbar-brand" href="#">
-            <img
-              src="./assets/Gmap.svg"
-              alt="Logo"
-              width="150"
-              height="40"
-              class="h-100"
-            />
-          </a>
-
-          <button
-            class="navbar-toggler border-0"
-            type="button"
-            data-bs-toggle="offcanvas"
-            data-bs-target="#offcanvasNavbar"
-            aria-controls="offcanvasNavbar"
-            aria-label="Toggle navigation"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              fill="currentColor"
-              class="bi bi-list"
-              viewBox="0 0 16 16"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
-              />
-            </svg>
-          </button>
-
-          <div
-            class="offcanvas offcanvas-end"
-            tabindex="-1"
-            id="offcanvasNavbar"
-            aria-labelledby="offcanvasNavbarLabel"
-          >
-            <div class="offcanvas-header">
-              <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="offcanvas"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div class="offcanvas-body">
-              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                <li class="nav-item">
-                  <a
-                    class="nav-link text-light"
-                    aria-current="page"
-                    href="#inicio"
-                    >Inicio</a
-                  >
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-light" href="#servicio"
-                    >Aplicaciones</a
-                  >
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-light" href="#preguntas">Preguntas</a>
-                </li>
-                <li class="nav-item dropdown">
-                  <a
-                    class="nav-link dropdown-toggle text-light"
-                    href="#"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    Servicios
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li>
-                      <a class="dropdown-item" href="./pages/integrations.html"
-                        ><i class="bi bi-union"></i> Integraciones</a
-                      >
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="./pages/developer.html"
-                        ><i class="bi bi-terminal-fill"></i> Desarrollo</a
-                      >
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="./pages/devices.html"
-                        ><i class="bi bi-cpu-fill"></i> Dispositivos</a
-                      >
-                    </li>
-                    <li><hr class="dropdown-divider" /></li>
-                    <li>
-                      <a
-                        class="dropdown-item"
-                        href="https://6re32.hatchboxapp.com/home/form"
-                        target="_blank"
-                        ><i class="bi bi-wrench-adjustable"></i> Soporte</a
-                      >
-                    </li>
-                  </ul>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-light" href="#contacto">Contacto</a>
-                </li>
-                <button
-                  class="btn btn-sm btn btn-warning rounded-4 gap-6"
-                  target="_blank"
-                  type="button"
-                  onclick="window.location.href='http://s1-gmapservice.com/GmapService/Index.html'"
-                >
-                  <b>Login</b>
-                </button>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </nav>
-    </section>
-  </body>
-</html>
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#04070f"><title>Telemetría IoT — GmapService</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"><link rel="stylesheet" href="../assets/css/style.css"><link rel="icon" href="../assets/icon.svg" type="image/svg+xml"></head><body><div class="bg-grid"></div><nav id="nav" class="scrolled"><div class="wrap nav-in"><a href="../index.html" class="brand-nav" aria-label="GmapService inicio"><img src="../assets/logos/gmapservice_nav.png" alt="GmapService"></a><button id="burger" aria-label="Abrir menú" aria-expanded="false">☰</button><div class="nav-links" id="navLinks">
+<a href="../index.html">Inicio</a>
+<div class="nav-dropdown"><button class="nav-drop-trigger" type="button" aria-expanded="false" aria-controls="servicesMenu">Servicios <span class="chevron">⌄</span></button><div class="nav-drop-menu" id="servicesMenu">
+<a href="developer.html"><span class="menu-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><path d="M14 17h6M17 14v6"/></svg></span><span><b>Desarrollo</b><small>Software a la medida</small></span></a>
+<a href="devices.html"><span class="menu-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="3"/><circle cx="12" cy="12" r="3"/><path d="M7 3v3M17 3v3M7 18v3M17 18v3"/></svg></span><span><b>Dispositivos</b><small>Telemetría e IoT</small></span></a>
+<a href="integrations.html"><span class="menu-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h14l-3-3M20 17H6l3 3"/><path d="M18 4l3 3-3 3M6 14l-3 3 3 3"/></svg></span><span><b>Integraciones</b><small>GPS, APIs y plataformas</small></span></a>
+</div></div>
+<a href="../index.html#aplicaciones">Soluciones</a><a href="../index.html#contacto">Contacto</a>
+<a class="btn-a btn-g" href="https://6re32.hatchboxapp.com/home/form" target="_blank" rel="noopener">Soporte</a>
+<a class="btn-a btn-p" href="http://s1-gmapservice.com/GmapService/Index.html" target="_blank" rel="noopener">Ingresar <span aria-hidden="true">↗</span></a>
+</div></div></nav><main><header class="iot-hero"><div class="wrap iot-hero-grid"><div><span class="iot-kicker">// Internet de las cosas · telemetría</span><h1>Cada vehículo genera datos. <span class="grad-txt">Nosotros los conectamos.</span></h1><p class="lead">Ubion permite centralizar la geolocalización y la telemetría compatible de múltiples dispositivos: ubicación, temperatura, ignición, eventos y otras variables útiles para la operación.</p><div class="iot-actions"><a class="btn-a btn-p" href="../index.html#contacto">Hablemos de tu proyecto ↗</a><a class="btn-a btn-g" href="../index.html">Explorar GmapService</a></div></div><div class="iot-visual device-visual">
+<div class="device-console">
+  <div class="device-console-head"><span><i></i> UBION / TELEMETRÍA</span><b>SEÑAL ESTABLE</b></div>
+  <div class="device-scene">
+    <div class="road-grid"></div>
+    <div class="vehicle-track"><span class="track-dot"></span><span class="track-dot second"></span><div class="truck"><span class="truck-cab"></span><span class="truck-body"></span><span class="wheel w1"></span><span class="wheel w2"></span><span class="wheel w3"></span></div></div>
+    <div class="device-tag gps-tag"><strong>⌖</strong><span>GPS / GNSS<small>Ubicación recibida</small></span><b class="status-dot"></b></div>
+    <div class="device-tag temp-tag"><strong>°C</strong><span>Temperatura<small class="temp-value">4.8 °C</small></span><b class="status-dot"></b></div>
+    <div class="device-tag fuel-tag"><strong>◒</strong><span>Combustible<small>76% · Nivel normal</small></span><b class="status-dot"></b></div>
+    <div class="cloud-link"><span>⇧</span><b>NUBE UBION</b><small>Datos sincronizados</small></div>
+  </div>
+  <div class="device-readings"><div><small>VELOCIDAD</small><b>58 <em>km/h</em></b></div><div><small>IGNICIÓN</small><b class="online">ACTIVA</b></div><div><small>ÚLTIMO DATO</small><b>Ahora</b></div></div>
+</div>
+</div></div></header><section class="iot-section "><div class="wrap"><span class="iot-kicker">// Capacidades</span><h2>Telemetría más allá de un punto en el mapa</h2><p class="iot-intro">Los datos disponibles dependen del hardware, sus sensores, la configuración y el protocolo de comunicación.</p><div class="iot-cards"><article class="iot-card"><div class="iot-icon">📍</div><h3>Posición y recorridos</h3><p>Ubicación, trayectos, velocidad y eventos de movimiento para comprender la actividad de cada unidad.</p><span class="iot-chip">GPS / GNSS</span></article><article class="iot-card"><div class="iot-icon">🌡</div><h3>Temperatura y cadena de frío</h3><p>Lecturas de sensores de temperatura compatibles para supervisar mercancías sensibles y detectar desviaciones.</p><span class="iot-chip">Sensores térmicos</span></article><article class="iot-card"><div class="iot-icon">⛽</div><h3>Combustible y consumo</h3><p>Integración de mediciones de nivel o consumo cuando el equipo y la instalación permiten capturarlas.</p><span class="iot-chip">Telemetría</span></article><article class="iot-card"><div class="iot-icon">🔌</div><h3>Ignición y entradas digitales</h3><p>Estados de encendido, señales digitales y otros eventos capturados desde el vehículo.</p><span class="iot-chip">I/O</span></article><article class="iot-card"><div class="iot-icon">🚦</div><h3>Alertas y geocercas</h3><p>Eventos de entrada o salida de zonas y condiciones configurables para seguimiento operativo.</p><span class="iot-chip">Eventos</span></article><article class="iot-card"><div class="iot-icon">📡</div><h3>Dispositivos y protocolos</h3><p>Soporte para diferentes tipos de rastreadores y sensores, previa validación de su protocolo y compatibilidad.</p><span class="iot-chip">Multi-dispositivo</span></article></div></div></section><section class="iot-section"><div class="wrap"><span class="iot-kicker">// Arquitectura conectada</span><h2>Del sensor a la nube, en un flujo continuo</h2><div class="iot-flow"><div class="iot-step"><span style="font-size:1.7rem">🚚</span><b>GPS y sensores</b><small>Fuentes y proveedores</small></div><span class="iot-arrow">→</span><div class="iot-step"><span style="font-size:1.7rem">☁</span><b>Integración</b><small>APIs · conectores · datos</small></div><span class="iot-arrow">→</span><div class="iot-step"><span style="font-size:1.7rem">📊</span><b>FlotaQ</b><small>Gestión del transporte</small></div><span class="iot-arrow">→</span><div class="iot-step"><span style="font-size:1.7rem">🎯</span><b>Decisiones</b><small>Operación informada</small></div></div><p class="iot-note">Diagrama conceptual. La disponibilidad y frecuencia de cada dato dependen del dispositivo, conectividad y servicio contratado.</p></div></section><section class="iot-section alt"><div class="wrap"><span class="iot-kicker">// Ecosistema conectado</span><h2>Unimos tecnología, datos y operación</h2><p class="iot-intro">GmapService desarrolla soluciones tecnológicas; Ubion facilita la geolocalización y el monitoreo; FlotaQ convierte información de distintas fuentes en procesos de gestión del transporte.</p><div class="iot-flow"><div class="iot-step"><img src="../assets/logos/gmapservice.png" alt="GmapService" style="height:40px;max-width:160px;object-fit:contain"><b>Empresa tecnológica</b></div><div class="iot-step"><img src="../assets/logos/ubion.png" alt="Ubion" style="height:40px;max-width:160px;object-fit:contain"><b>Geolocalización</b></div><div class="iot-step"><img src="../assets/logos/flotaq.png" alt="FlotaQ" style="height:40px;max-width:160px;object-fit:contain"><b>Gestión de transporte</b></div></div></div></section></main><footer><div class="wrap foot"><a href="../index.html" class="brand-nav"><img src="../assets/logos/gmapservice.png" alt="GmapService"></a><span>© 2026 GmapService · Tecnología, telemetría e integración IoT</span></div></footer><script>
+const navLinks=document.getElementById('navLinks');
+const burger=document.getElementById('burger');
+const drop=document.querySelector('.nav-dropdown');
+const dropButton=document.querySelector('.nav-drop-trigger');
+if(burger) burger.addEventListener('click',()=>{const open=navLinks.classList.toggle('open');burger.setAttribute('aria-expanded',String(open));});
+if(dropButton) dropButton.addEventListener('click',()=>{const open=drop.classList.toggle('expanded');dropButton.setAttribute('aria-expanded',String(open));});
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{navLinks.classList.remove('open');drop?.classList.remove('expanded');burger?.setAttribute('aria-expanded','false');dropButton?.setAttribute('aria-expanded','false');}));
+document.addEventListener('click',e=>{if(drop && !drop.contains(e.target)){drop.classList.remove('expanded');dropButton?.setAttribute('aria-expanded','false');}});
+</script></body></html>
