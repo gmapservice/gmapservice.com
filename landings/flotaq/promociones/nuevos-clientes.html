@@ -146,6 +146,106 @@
     <svg class="wa-i" aria-hidden="true"><use href="#wa"/></svg>
     <span>Escribir a un asesor ahora</span><b>↗</b>
    </a>
+   </div>
+   <p class="steps-form-link">
+    ¿Prefieres que te contactemos? <a href="#formulario-contacto">Déjanos tus datos aquí</a>.
+   </p>
+  </div>
+ </section>
+
+<section class="lead-section" id="formulario-contacto">
+ <div class="wrap">
+  <div class="lead-card">
+   <div class="lead-intro">
+    <span class="kicker">TAMBIÉN PODEMOS CONTACTARTE</span>
+    <h2>Cuéntanos sobre tu <span class="accent">operación.</span></h2>
+    <p>Déjanos tus datos y un asesor de FlotaQ se comunicará contigo para explicarte la plataforma y cómo acceder al 30% de descuento.</p>
+    <div class="lead-benefit"><span>30%</span><div><b>Descuento para nuevos clientes</b><small>Consulta las condiciones de la promoción de noviembre de 2026.</small></div></div>
+   </div>
+
+   <form id="flotaq-lead-form" class="lead-form" action="https://formspree.io/f/xrpqpjyd" method="POST">
+    <input type="hidden" name="_subject" value="Nuevo prospecto desde la landing de FlotaQ">
+    <input type="hidden" name="origen" value="Landing promocional FlotaQ">
+    <input type="hidden" name="utm_source" id="lead-utm-source">
+    <input type="hidden" name="utm_medium" id="lead-utm-medium">
+    <input type="hidden" name="utm_campaign" id="lead-utm-campaign">
+    <input type="hidden" name="utm_term" id="lead-utm-term">
+    <input type="hidden" name="utm_content" id="lead-utm-content">
+    <input type="hidden" name="gclid" id="lead-gclid">
+    <input type="hidden" name="gbraid" id="lead-gbraid">
+    <input type="hidden" name="wbraid" id="lead-wbraid">
+    <input type="hidden" name="pagina_origen" id="lead-page-url">
+    <input type="hidden" name="referente" id="lead-referrer">
+
+    <!-- Campo anti-spam: debe permanecer vacío y oculto. -->
+    <div class="lead-honeypot" aria-hidden="true">
+     <label for="lead-website">No completar este campo</label>
+     <input type="text" id="lead-website" name="_gotcha" tabindex="-1" autocomplete="off">
+    </div>
+
+    <div class="lead-form-heading">
+     <h3>Solicita información</h3>
+     <p>Los campos marcados con * son obligatorios.</p>
+    </div>
+
+    <div class="lead-fields">
+     <div class="lead-field">
+      <label for="lead-company">Nombre de la empresa</label>
+      <input type="text" id="lead-company" name="empresa" placeholder="Ej. Transportes ABC" autocomplete="organization" maxlength="120">
+     </div>
+     <div class="lead-field">
+      <label for="lead-name">Nombre de contacto *</label>
+      <input type="text" id="lead-name" name="nombre" placeholder="¿Con quién hablamos?" autocomplete="name" required maxlength="100">
+     </div>
+     <div class="lead-field">
+      <label for="lead-phone">WhatsApp / Teléfono *</label>
+      <input type="tel" id="lead-phone" name="telefono" placeholder="Ej. 300 123 4567" autocomplete="tel" inputmode="tel" required maxlength="30">
+     </div>
+     <div class="lead-field">
+      <label for="lead-email">Correo electrónico *</label>
+      <input type="email" id="lead-email" name="email" placeholder="nombre@empresa.com" autocomplete="email" required maxlength="150">
+     </div>
+     <div class="lead-field">
+      <label for="lead-vehicles">¿Cuántos vehículos administras?</label>
+      <select id="lead-vehicles" name="cantidad_vehiculos">
+       <option value="">Selecciona una opción</option>
+       <option>1 a 10 vehículos</option>
+       <option>11 a 30 vehículos</option>
+       <option>31 a 50 vehículos</option>
+       <option>51 a 100 vehículos</option>
+       <option>Más de 100 vehículos</option>
+      </select>
+     </div>
+     <div class="lead-field">
+      <label for="lead-interest">¿Qué solución te interesa?</label>
+      <select id="lead-interest" name="solucion_interes">
+       <option value="">Selecciona una opción</option>
+       <option>Gestión integral de flotas</option>
+       <option>Gestión de transporte</option>
+       <option>Mantenimiento vehicular</option>
+       <option>Preoperacionales</option>
+       <option>FUEC y extractos</option>
+       <option>Monitoreo GPS</option>
+       <option>Gestión de conductores</option>
+      </select>
+     </div>
+     <div class="lead-field lead-field-full">
+      <label for="lead-message">Cuéntanos brevemente qué necesitas (opcional)</label>
+      <textarea id="lead-message" name="mensaje" rows="3" placeholder="¿Qué te gustaría mejorar en la operación de tu empresa?" maxlength="1000"></textarea>
+     </div>
+    </div>
+
+    <label class="lead-consent">
+     <input type="checkbox" name="autorizacion_tratamiento_datos" value="Acepto" required>
+     <span>Autorizo a FlotaQ / GmapService a tratar mis datos personales para contactarme y enviarme información comercial, de acuerdo con su <a href="./politica-de-privacidad.html" target="_blank" rel="noopener noreferrer">Política de Tratamiento de Datos Personales</a>.</span>
+    </label>
+
+    <button type="submit" class="lead-submit">
+     <span class="lead-submit-text">Solicitar información</span><b aria-hidden="true">→</b>
+    </button>
+    <p class="lead-privacy-note">Tus datos se utilizarán para atender esta solicitud comercial.</p>
+    <div class="lead-feedback" id="lead-feedback" role="status" aria-live="polite" hidden></div>
+   </form>
   </div>
  </div>
 </section>
@@ -196,6 +296,69 @@
       if(window.gtag){gtag('event','whatsapp_click',{cta_location:a.getAttribute('data-cta')});}
     });
   });
+  // Captura los parámetros de campaña para identificar el origen del prospecto.
+  var params = new URLSearchParams(window.location.search);
+  ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(function(key){
+    var field = document.getElementById('lead-' + key.replace('_','-'));
+    if(field) field.value = params.get(key) || '';
+  });
+  ['gclid','gbraid','wbraid'].forEach(function(key){
+    var field = document.getElementById('lead-' + key);
+    if(field) field.value = params.get(key) || '';
+  });
+  var pageUrl = document.getElementById('lead-page-url');
+  var referrer = document.getElementById('lead-referrer');
+  if(pageUrl) pageUrl.value = window.location.href;
+  if(referrer) referrer.value = document.referrer || 'Acceso directo';
+
+  // Envío AJAX a Formspree: el visitante permanece en la landing.
+  var leadForm = document.getElementById('flotaq-lead-form');
+  var feedback = document.getElementById('lead-feedback');
+  if(leadForm && feedback){
+    leadForm.addEventListener('submit', function(event){
+      event.preventDefault();
+      if(!leadForm.reportValidity()) return;
+
+      var submitButton = leadForm.querySelector('.lead-submit');
+      var submitText = leadForm.querySelector('.lead-submit-text');
+      var originalText = submitText.textContent;
+      submitButton.disabled = true;
+      submitText.textContent = 'Enviando...';
+      feedback.hidden = true;
+      feedback.className = 'lead-feedback';
+
+      fetch(leadForm.action, {
+        method: 'POST',
+        body: new FormData(leadForm),
+        headers: { 'Accept': 'application/json' }
+      })
+      .then(function(response){
+        if(!response.ok){
+          return response.json().then(function(data){
+            throw new Error(data.errors ? data.errors.map(function(item){return item.message;}).join(' ') : 'No fue posible enviar la solicitud.');
+          });
+        }
+        return response.json();
+      })
+      .then(function(){
+        feedback.textContent = '¡Gracias por contactarnos! Recibimos tus datos. Un asesor de FlotaQ se comunicará contigo pronto.';
+        feedback.classList.add('is-success');
+        feedback.hidden = false;
+        leadForm.reset();
+        if(window.gtag){gtag('event','generate_lead',{form_name:'formulario_landing_flotaq'});}
+      })
+      .catch(function(error){
+        feedback.textContent = error.message || 'Ocurrió un error al enviar tus datos. Inténtalo nuevamente o escríbenos por WhatsApp.';
+        feedback.classList.add('is-error');
+        feedback.hidden = false;
+      })
+      .finally(function(){
+        submitButton.disabled = false;
+        submitText.textContent = originalText;
+      });
+    });
+  }
+
   // Cuenta regresiva hasta el fin de noviembre (hora de Colombia, UTC-5)
   var box=document.getElementById('countdown');
   if(!box)return;
